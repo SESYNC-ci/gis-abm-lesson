@@ -9,3 +9,5 @@
 -- a merge conflict with upstream.   --
 -------------------------------------->
 
+[lesson]: https://sesync-ci.github.io/gis-abm-lesson
+[slideshow]: https://sesync-ci.github.io/gis-abm-lesson/instructor

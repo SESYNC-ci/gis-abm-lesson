@@ -1,8 +1,22 @@
 # Site
 
+title: "Introduction to GIS and ABM"
+worksheet:
+handouts:
+instructor: Nick Magliocca
+authors:
+  - Nick Magliocca
+lesson: 3
+
 # Slides
 
 slide_sorter:
+  - intro
+  - gis
+  - organize
+  - ebola
+  - ebola-ext
+  - conclude  
 
 #####################################
 # Only modify content above or risk #
