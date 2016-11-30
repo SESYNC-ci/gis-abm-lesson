@@ -8,7 +8,7 @@ Overview of Model Process
 - Scope topic
 - Identify what you need
 - Getting/Organizing/Reviewing/Cleaning Data
-- Importing data and building a Netlogo model
+- Importing data and building a NetLogo model
 - Trouble-shooting and test throughout the process
 - Validation
 - Sharing your model
@@ -29,7 +29,7 @@ Overview of Model Process
 
 ## A note about this model ...
 
-For this exercise we are only focusing on a sample model to bring in the GIS and CSV data into Netlogo, based on these themes above. We will not actually model the spread of the disease or be able to support the experiments with this base model. However, I encourage you to build upon the model to do this.
+For this exercise we are only focusing on a sample model to bring in the GIS and CSV data into NetLogo, based on these themes above. We will not actually model the spread of the disease or be able to support the experiments with this base model. However, I encourage you to build upon the model to do this.
 
 See Dr. Andrew Crooks's work on Ebola
 
@@ -41,24 +41,22 @@ See Dr. Andrew Crooks's work on Ebola
 ## What data do we need?
 
 - Map data
-- Demographic
+- Demographic data
 - Ebola counts
 
 ===
 
 ## Reminder about Shapefiles
 
-Shapefiles are actually composed of several component files
+Shapefiles are actually composed of several component files. At least 4, but up to 8, files that end in the following: .shp, .dbf, .shx, .prj, .sbn, .sbx, .cpg, .xml.
 
-They are made up of minimum of 4 and up to 8 files that end in the following: .shp, .dbf, .shx, .prj, .sbn,.sbx, .cpg, .xml
-
-User tip: Try to keep all of these together in the same folder!
+Pro Tip: Try to keep all of these together in the same folder!
 
 ===
 
 ## Reminder about Tabular Data
 
-CSV: Structured data in text format separated by commas
+Use CSV files for structured data in text format separated by commas.
 
 Viewed in text editor:
 
@@ -107,9 +105,9 @@ View in tabular form:
 
 ## Review the Data
 
-The dbf file contains the GIS data attributes that you will use in Netlogo.
+The dbf file contains the GIS data attributes that you will use in NetLogo.
 
-- Open the .dbf file for Cases_at_Admin2 in excel or open office (do not save!).
+- Open the .dbf file for "Cases\_at\_Admin2" in excel or open office (do not save!).
 - Note the column names of interest for the model (district name, country name, number of confirmed cases), and then close the file but do not save.
 
 Note: may have to refer back to data source to know what column names mean: District name (GLOBAL_A_1), country name (GLOBAL_A_3), and the number of confirmed ebola cases to date (V_ADM2_C3)
@@ -122,7 +120,7 @@ Review projection: The .prj file tells us the spatial reference information and 
 
 - Open .prj file in a text editor, review, close, do not save.
 
-- COPY any one of the .prj file and name it 'projection.prj' to make it easy for Netlogo and to have a separate prj file for the model.
+- COPY any one of the .prj file and name it 'projection.prj' to make it easy for NetLogo and to have a separate prj file for the model.
 
 - Review spatial extent of data in QGIS, optional.
 
@@ -140,7 +138,7 @@ Create additional GIS data layers if needed for the model.
 
 ===
 
-Bring data into Netlogo
+Bring data into NetLogo
 
 - Load data (image, vectors, csv) (tips to make it faster with speed slider, and pixel size and making smaller input file via smoothing)
 - Make the map: Display, label features (draw features, apply color, label)
@@ -150,18 +148,18 @@ Bring data into Netlogo
 
 ===
 
-Netlogo Extensions
+NetLogo Extensions
 
-Netlogo Homepage: http://ccl.northwestern.edu/netlogo/
+NetLogo Homepage: http://ccl.northwestern.edu/netlogo/
 
-Or, in Netlogo, go to Help>Netlogo User Manual
+Or, in NetLogo, go to Help>NetLogo User Manual
 
 ===
 
-Netlogo and GIS
+NetLogo and GIS
 
-A great reference for working with GIS data in Netlogo is the model in the model library:
-- Open Netlogo>Models Library>Code Examples>GIS>GIS General Examples
+A great reference for working with GIS data in NetLogo is the model in the model library:
+- Open NetLogo>Models Library>Code Examples>GIS>GIS General Examples
 - Click setup (to load the GIS)
 - Click display-countries
 - display-population-in-patches

@@ -3,11 +3,15 @@
 
 ## Quick reminder: GIS data types and formats
 
-Using the GIS extension, you can use geographic data that is vector format as shapefiles or raster data as ASCII and .tif.
+Using the GIS extension, you can use geographic data that is vector format as shapefiles or raster data as ASCII and TIFF.
 
-Vector datasets (shapefiles): For example, cities as points, roads as lines, buildings as polygons
-
-Raster datasets (ASCII, .tif): For example, elevation data or remote sensing imagery
+- Vector datasets (e.g. shapefiles)
+  - cities as points
+  - roads as lines
+  - buildings as polygons
+- Raster datasets (e.g. ASCII, TIFF)
+  - elevation data
+  - remote sensing imagery
 
 ===
 

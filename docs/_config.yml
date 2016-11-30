@@ -2,6 +2,8 @@
 
 title: "Introduction to GIS and ABM"
 worksheet:
+  - worksheet-1.nlogo
+  - worksheet-2.nlogo
 handouts:
 instructor: Nick Magliocca
 authors:
