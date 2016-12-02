@@ -8,9 +8,9 @@ best to zip the model and data folder together at the same time.
 
 ===
 
-Review
+## Review
 
-- You learned about pros/cons of GIS data and Netlogo.
+- You learned about pros/cons of GIS data and Netlogo
 - You searched for, obtained, reviewed GIS data
 - You loaded GIS data into Netlogo and displayed it
 - You applied GIS attributes to Netlogo patches and turtles
@@ -20,7 +20,7 @@ Review
 
 ===
 
-A few parting tips ...
+## A Few Parting Tips ...
 
 Things to consider when thinking about using GIS data in a Model ...
 
