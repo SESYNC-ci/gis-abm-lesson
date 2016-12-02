@@ -8,9 +8,9 @@ best to zip the model and data folder together at the same time.
 
 ===
 
-Review
+## Review
 
-- You learned about pros/cons of GIS data and Netlogo.
+- You learned about pros/cons of GIS data and Netlogo
 - You searched for, obtained, reviewed GIS data
 - You loaded GIS data into Netlogo and displayed it
 - You applied GIS attributes to Netlogo patches and turtles
@@ -20,13 +20,15 @@ Review
 
 ===
 
-A few parting tips ...
+## A Few Parting Tips ...
 
 Things to consider when thinking about using GIS data in a Model ...
 
 Tip 1: Models can be effective and efficient without incorporating GIS
 
 Tip 2: If you use GIS data, you raise the expectation that your model represents realistic behavior. This means your audience may have less tolerance for inconsistencies with a GIS based model than if they were viewing an abstract model.
+
+===
 
 Tip 3: If you use GIS data, try to also visually represent the layers in a meaningful and visually appealing way.
 

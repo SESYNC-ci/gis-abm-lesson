@@ -1,21 +1,19 @@
 ---
 ---
 
-## What do we have so far?
+## What Do We Have So Far?
 
-The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled.
+The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled
 
-We can see which districts have more confirmed ebola cases. Those with more cases are shown in darker red. Those with fewer cases are shown in lighter shades of pinkish-white.
-
-The districts are outlined with thick light gray lines. Each district name is labeled in black.
-
-The treatment centers are shown as red circles. The road network is shown as thin black lines and they appear to connect most treatment centers.
+- We can see which districts have more confirmed ebola cases. Those with more cases are shown in darker red. Those with fewer cases are shown in lighter shades of pinkish-white.
+- The districts are outlined with thick, light gray lines. Each district name is labeled in black.
+- The treatment centers are shown as red circles. The road network is shown as thin black lines and they appear to connect most treatment centers.
 
 All this with GIS data freely downloaded and using the Netlogo GIS extension. Although this model is not complete, we have made a nice visual base model upon which to add more data and behavior.
 
 ===
 
-## What story are we trying to tell?
+## What Story Are We Trying To Tell?
 
 We can see which districts had more confirmed ebola cases, but we don’t know how much of the population in
 each district was impacted.
@@ -28,13 +26,15 @@ We need to get more data about the population in each district of Sierra Leone.
 
 ## Population Data
 
-For a quick sources of data, go to Wikipedia: [Districts of Sierra Leone](https://en.wikipedia.org/wiki/Districts_of_Sierra_Leone)
+For a quick source of data, go to Wikipedia: [Districts of Sierra Leone](https://en.wikipedia.org/wiki/Districts_of_Sierra_Leone)
 
-You can simply grab this table by highlighting the table contents including headers, copy it, paste it in a spreadsheet, save as 'SL_pop.csv' in the data folder with your GIS data. (Already done for you.)
+You can simply grab this table by highlighting the table contents including headers. 
+
+Copy it, paste it in a spreadsheet, and save as 'SL_pop.csv' in the data folder with your GIS data. (Already done for you.)
 
 ===
 
-## Inspect the data
+## Inspect the Data
 
 Open in Excel (or other spreadsheet or text editor program).
 
@@ -63,19 +63,19 @@ Check the code, push the 'load-pop' button.
 
 ===
 
-## What happened?
+## What Happened?
 
-Look at the CSV fiel again.
+Look at the CSV file again.
 
-Note the name of the districts in the GIS data and shown on the display are all upper case, but the name of districts in the csv data is mixed case. Netlogo does not do fuzzy matching. It must be exactly the same, so let’s add code to fix this.
+Note how the name of the districts in the GIS data and shown on the display are all upper case, but the name of districts in the CSV data is mixed case. Netlogo does not do fuzzy matching. It must be exactly the same, so let’s add code to fix this.
 
 ===
 
 ## Fix the Labels
 
-We could fix this in the csv file, but let’s fix it in Netlogo with some code.
+We could fix this in the CSV file, but let’s fix it in Netlogo with some code.
 
-Go back to the 'file-open' code block, and makes these changes to the second and third lines after the 'while' command:
+Go back to the 'file-open' code block and make these changes to the second and third lines after the 'while' command:
 
 ```
 let d_name item 0 row
@@ -113,7 +113,7 @@ Green stickies when you've gotten the model to produce agents in proportion to p
 
 ===
 
-## What story are we trying to tell?
+## What Story Are We Trying To Tell?
 
 We now have a nice base model.
 

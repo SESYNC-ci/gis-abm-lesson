@@ -126,7 +126,7 @@ Review projection: The .prj file tells us the spatial reference information and 
 
 ===
 
-A note about GIS software
+## A Note About GIS Software
 
 ArcGIS/QGIS to View and Process GIS data
 
@@ -138,7 +138,7 @@ Create additional GIS data layers if needed for the model.
 
 ===
 
-Bring data into NetLogo
+## Bring Data into NetLogo
 
 - Load data (image, vectors, csv) (tips to make it faster with speed slider, and pixel size and making smaller input file via smoothing)
 - Make the map: Display, label features (draw features, apply color, label)
@@ -148,20 +148,22 @@ Bring data into NetLogo
 
 ===
 
-NetLogo Extensions
+## NetLogo Extensions
 
 NetLogo Homepage: http://ccl.northwestern.edu/netlogo/
 
-Or, in NetLogo, go to Help>NetLogo User Manual
+Or, in NetLogo, go to Help > NetLogo User Manual
 
 ===
 
-NetLogo and GIS
+## NetLogo and GIS
 
 A great reference for working with GIS data in NetLogo is the model in the model library:
-- Open NetLogo>Models Library>Code Examples>GIS>GIS General Examples
+
+- Open NetLogo > Models Library > Code Examples > GIS > GIS General Examples
 - Click setup (to load the GIS)
 - Click display-countries
 - display-population-in-patches
 - Go to code tab (notice extensions at top, setup commands, good commenting throughout).
+
 Note: You can use this model to copy and adapt code sections for your own models.
