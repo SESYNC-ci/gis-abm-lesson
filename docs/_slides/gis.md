@@ -5,11 +5,11 @@
 
 Using the GIS extension, you can use geographic data that is vector format as shapefiles or raster data as ASCII and TIFF.
 
-- Vector datasets (e.g. shapefiles)
+- Vector datasets (e.g., shapefiles)
   - cities as points
   - roads as lines
   - buildings as polygons
-- Raster datasets (e.g. ASCII, TIFF)
+- Raster datasets (e.g., ASCII, TIFF)
   - elevation data
   - remote sensing imagery
 
@@ -28,5 +28,5 @@ Using the GIS extension, you can use geographic data that is vector format as sh
 
 - Need realistic agent behavior to correspond with spatial scale of model with GIS
 - Scale matters. At detailed map scale, challenge to get spatial reference system to match Netlogo reference such that 10 km = distance of 1 patch, for example.
-- GIS data may slow down model load time and run time
+- GIS data may slow down model load and run time
 - GIS and data acquisition/cleaning/processing may be time intensive and require tools like QGIS and Open Office
