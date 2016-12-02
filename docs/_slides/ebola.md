@@ -129,7 +129,7 @@ Note: Always color patches first.
 
 Note that the code 'gis:draw' only adds the GIS data to the display for visual effect. This does not actually apply any attributes to patches or turtles. And turtles and patches cannot interact with the features that are drawn with gis:draw command.
 
-![]({{ site.basurl }}/images/netlogo_gis_draw.jpeg)
+![]({{ site.baseurl }}/images/netlogo_gis_draw.jpeg)
 
 Also note that the red square in the image represents the size of one patch. You can see that the gray line of the boundary and the black line of the road are coarse when inspecting at the patch level - this is just the way Netlogo converts vector data for display. Also note that the detail of these vector GIS features is more detailed than the size of the patch.
 
