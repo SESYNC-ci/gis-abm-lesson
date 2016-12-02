@@ -85,7 +85,7 @@ To change model extent, we need to find where it is defined
 
 - Go back up to the 'setup' code block.
 
-- Comment-out entities with undesired extents to specify our desired extent; in this case, just Sierra Leone
+- Comment-out entities with undesired extents to specify our desired extent; in this case, just Sierra Leone.
 
 - Return to the interface, press 'setup' and 'draw.' 
 
