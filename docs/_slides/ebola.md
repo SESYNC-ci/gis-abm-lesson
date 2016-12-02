@@ -135,7 +135,7 @@ Also note that the red square in the image represents the size of one patch. You
 
 ===
 
-## Label each district
+## Label Each District
 
 Go to the interface tab. Create button called 'load-pop'.
 
