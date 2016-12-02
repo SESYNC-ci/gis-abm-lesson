@@ -3,7 +3,7 @@
 
 ## What Do We Have So Far?
 
-The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled.
+The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled
 
 - We can see which districts have more confirmed ebola cases. Those with more cases are shown in darker red. Those with fewer cases are shown in lighter shades of pinkish-white.
 - The districts are outlined with thick, light gray lines. Each district name is labeled in black.
