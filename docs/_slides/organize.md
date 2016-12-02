@@ -152,7 +152,7 @@ Create additional GIS data layers if needed for the model.
 
 NetLogo Homepage: http://ccl.northwestern.edu/netlogo/
 
-Or, in NetLogo, go to Help>NetLogo User Manual
+Or, in NetLogo, go to Help > NetLogo User Manual
 
 ===
 
