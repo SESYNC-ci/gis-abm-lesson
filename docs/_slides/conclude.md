@@ -28,6 +28,8 @@ Tip 1: Models can be effective and efficient without incorporating GIS
 
 Tip 2: If you use GIS data, you raise the expectation that your model represents realistic behavior. This means your audience may have less tolerance for inconsistencies with a GIS based model than if they were viewing an abstract model.
 
+===
+
 Tip 3: If you use GIS data, try to also visually represent the layers in a meaningful and visually appealing way.
 
 Tip 4: If you create a model with GIS data, you have to send the model and the folder of GIS data to the end user as a zip package. Or you can export Netlogo world and send this as the base data to import into the model.
