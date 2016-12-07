@@ -55,7 +55,7 @@ Go to the 'load-pop' section of the code. Begin with section that starts:
 ```
 file-open "...
 ```
-{:.text-document title="{{ site.worksheet[1] }}"}
+{:.text-document title="{{ site.handouts[1] }}"}
 
 Specify the file name to load. 
 
@@ -81,7 +81,7 @@ Go back to the 'file-open' code block and make these changes to the second and t
 let d_name item 0 row
 let district_name upper-case-string d_name
 ```
-{:.text-document title="{{ site.worksheet[1] }}"}
+{:.text-document title="{{ site.handouts[1] }}"}
 
 This change calls a function named 'upper-case-string' to convert the data stored in 'd_name' to be uppercase and store this final version as district_name.
 
@@ -95,7 +95,7 @@ Go to the bottom of the code. Find the two statements starting with:
 to-report upper-case-string [s]
 	...
 ```
-{:.text-document title="{{ site.worksheet[1] }}"}
+{:.text-document title="{{ site.handouts[1] }}"}
 
 and:
 
@@ -103,7 +103,7 @@ and:
 to-report uppoer-case-char [c]
 	...
 ```
-{:.text-document title="{{ site.worksheet[1] }}"}
+{:.text-document title="{{ site.handouts[1] }}"}
 
 These two functions convert the input to uppercase.
 

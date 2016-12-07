@@ -23,7 +23,7 @@ breed [ admin-labels admin-label ]
 patches-own [district-name confirmed population road-here]
 turtles-own [name status time-infected]
 ```
-{:.text-document title="{{ site.worksheet[0] }}"}
+{:.text-document title="{{ site.handouts[0] }}"}
 
 What entities will be created from data? What attributes will patches have? Turtles?
 
@@ -44,7 +44,7 @@ Find the next code block starting with:
 to setup
 	...
 ```
-{:.text-document title="{{ site.worksheet[0] }}"}
+{:.text-document title="{{ site.handouts[0] }}"}
 
 We need to assign data to our global variables and load the data files.	
 
@@ -67,7 +67,7 @@ Look at the next code block starting with:
 to draw
 	...
 ```
-{:.text-document title="{{ site.worksheet[0] }}"}
+{:.text-document title="{{ site.handouts[0] }}"}
 
 What colors are we making sites, districts, and roads? How do we assign roads to specific patches?
 
@@ -145,6 +145,6 @@ Go to the code block starting with:
 to load-pop
 	...
 ```
-{:.text-document title="{{ site.worksheet[0] }}"}
+{:.text-document title="{{ site.handouts[0] }}"}
 
 Look at the structure of the loop beginning with the 'foreach' command. See how we can assign labels from our data file with this loop?

@@ -1,10 +1,9 @@
 # Site
 
 title: "Introduction to GIS and ABM"
-worksheet:
+handouts:
   - ebola_model.nlogo
   - expanded_ebola_model.nlogo
-handouts:
 instructor: Nick Magliocca
 authors:
   - Nick Magliocca
