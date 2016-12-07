@@ -47,9 +47,9 @@ to draw
 
   gis:set-drawing-color black
   gis:draw roads 1
-  ask patches
-     [if gis:intersects? roads self
-         [set road-here 1 ] ]
+  ;ask patches
+   ;  [if gis:intersects? roads self
+    ;     [set road-here 1 ] ]
 end
 
 to load-pop
