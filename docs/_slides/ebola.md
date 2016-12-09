@@ -127,6 +127,7 @@ gis:apply-coverage districts "V_ADM2_C_3" confirmed
     [set pcolor white]
   ]
 ```
+{:.text-document title="{{ site.handouts[0] }}"}
 
 - Make sure to place the block of code in the same order within the to draw section.
 
