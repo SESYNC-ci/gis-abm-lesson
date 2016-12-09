@@ -119,6 +119,15 @@ ask (patch 1 1) [show confirmed]
 
 - In the 'draw' code block, add the code shown in the box, check the code, then click the draw button.
 
+```
+gis:apply-coverage districts "V_ADM2_C_3" confirmed
+  ask patches
+  [ifelse (confirmed > 0)
+    [set pcolor scale-color red confirmed 5000 0]
+    [set pcolor white]
+  ]
+```
+
 - Make sure to place the block of code in the same order within the to draw section.
 
 Note: Always color patches first.
