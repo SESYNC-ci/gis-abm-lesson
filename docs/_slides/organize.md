@@ -140,7 +140,7 @@ Create additional GIS data layers if needed for the model.
 
 ## Bring Data into NetLogo
 
-- Load data (image, vectors, csv) (tips to make it faster with speed slider, and pixel size and making smaller input file via smoothing)
+- Load data (image, vectors, csv) (tips to make it faster with pixel size and smaller input file via smoothing)
 - Make the map: Display, label features (draw features, apply color, label)
 - Create agents based on map attributes
 - Agent-environment interaction (e.g. movement constrained by map properties - road following, move within state, etc.)
