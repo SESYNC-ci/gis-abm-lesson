@@ -26,7 +26,7 @@
   <li><a href="#/slides/gis">Quick reminder: GIS data types and formats</a></li>
   <li><a href="#/slides/organize">Let’s Make a Model!</a></li>
   <li><a href="#/slides/ebola">Let’s Make the Ebola Model!</a></li>
-  <li><a href="#/slides/ebola-ext">What Do We Have So Far?</a></li>
+  <li><a href="#/slides/ebola-ext">What Story Are We Trying To Tell?</a></li>
   <li><a href="#/slides/conclude">Sharing the Model</a></li>
 </ul>
 
@@ -151,7 +151,7 @@
 
 <p>Viewed in text editor:</p>
 
-<div class="text-document highlighter-rouge" title="population.csv"><pre class="highlight"><code>District,Province,Capital,Area,Population
+<div class="text-document highlighter-rouge" title="data/SL_pop.csv"><pre class="highlight"><code>District,Province,Capital,Area,Population
 Kailahun,Eastern,Kailahun,3859,358190
 Kenema,Eastern,Kenema,6053,497948
 </code></pre>
@@ -183,6 +183,13 @@ Kenema,Eastern,Kenema,6053,497948
       <td>Kenema</td>
       <td>6053</td>
       <td>497948</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -433,12 +440,6 @@ turtles-own [name status time-infected]
 
 <p>Look at the structure of the loop beginning with the ‘foreach’ command. See how we can assign labels from our data file with this loop?</p>
 
-<p class="ToS"><a href="#/slides/ebola">Top of Section</a></p>
-
-<hr />
-
-<p><a name="/slides/ebola-ext"></a></p>
-
 <h2 id="what-do-we-have-so-far">What Do We Have So Far?</h2>
 
 <p>The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled</p>
@@ -486,7 +487,7 @@ each district was impacted.</p>
 
 <p>Go to the ‘load-pop’ section of the code. Begin with section that starts:</p>
 
-<div class="text-document highlighter-rouge" title="expanded_ebola_model.nlogo"><pre class="highlight"><code>file-open "...
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>file-open "...
 </code></pre>
 </div>
 
@@ -506,7 +507,7 @@ each district was impacted.</p>
 
 <p>Go back to the ‘file-open’ code block and make these changes to the second and third lines after the ‘while’ command:</p>
 
-<div class="text-document highlighter-rouge" title="expanded_ebola_model.nlogo"><pre class="highlight"><code>let d_name item 0 row
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>let d_name item 0 row
 let district_name upper-case-string d_name
 </code></pre>
 </div>
@@ -517,14 +518,14 @@ let district_name upper-case-string d_name
 
 <p>Go to the bottom of the code. Find the two statements starting with:</p>
 
-<div class="text-document highlighter-rouge" title="expanded_ebola_model.nlogo"><pre class="highlight"><code>to-report upper-case-string [s]
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to-report upper-case-string [s]
 	...
 </code></pre>
 </div>
 
 <p>and:</p>
 
-<div class="text-document highlighter-rouge" title="expanded_ebola_model.nlogo"><pre class="highlight"><code>to-report uppoer-case-char [c]
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to-report uppoer-case-char [c]
 	...
 </code></pre>
 </div>
@@ -535,7 +536,13 @@ let district_name upper-case-string d_name
 
 <p>Green stickies when you’ve gotten the model to produce agents in proportion to population.</p>
 
-<h2 id="what-story-are-we-trying-to-tell-1">What Story Are We Trying To Tell?</h2>
+<p class="ToS"><a href="#/slides/ebola">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/ebola-ext"></a></p>
+
+<h2 id="what-story-are-we-trying-to-tell">What Story Are We Trying To Tell?</h2>
 
 <p>We now have a nice base model.</p>
 
@@ -543,7 +550,7 @@ let district_name upper-case-string d_name
 
 <h2 id="make-agents-move-along-roads">Make agents move along roads</h2>
 
-<p>Open the Netlogo model ‘Extended_ebola_model’</p>
+<p>Open the Netlogo model ‘expanded_ebola_model.nlogo’</p>
 
 <p>Let’s check out the ‘go’ code blocks.</p>
 
