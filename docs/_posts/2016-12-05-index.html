@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction to GIS and ABM</title>
+<meta name="description" content="Use spatial data in NetLogo ABMs.">
+<link rel="canonical" href="https://sesync-ci.github.io/gis-abm-lesson/class/archive.html">
+
+	  <link rel="stylesheet" href="https://cdn.rawgit.com/sesync-ci/lesson-style/1.1/docs/css/static.css">
+  </head>
+  <body>
+	  <div class="page-content">
+	    <div class="wrapper">
+        
+        
+<h1 style="text-transform: none;" id="introduction-to-gis-and-abm">Introduction to GIS and ABM</h1>
+
+<p>Lesson 5 with <em>Nick Magliocca</em></p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#/slides/intro">Lesson Goals</a></li>
+  <li><a href="#/slides/gis">Quick reminder: GIS data types and formats</a></li>
+  <li><a href="#/slides/organize">Let’s Make a Model!</a></li>
+  <li><a href="#/slides/ebola">Let’s Make the Ebola Model!</a></li>
+  <li><a href="#/slides/ebola-ext">What Story Are We Trying To Tell?</a></li>
+  <li><a href="#/slides/conclude">Sharing the Model</a></li>
+</ul>
+
+<hr />
+
+<p><a name="/slides/intro"></a></p>
+
+<h2 id="lesson-goals">Lesson Goals</h2>
+
+<p>This tutorial will introduce you to:</p>
+
+<ol>
+  <li>Pros/Cons of introducing GIS data to your models</li>
+  <li>Downloading, cleaning, and importing GIS data into models</li>
+  <li>Implementing ABMs with GIS data</li>
+</ol>
+
+<p class="ToS"><a href="#/slides/intro">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/gis"></a></p>
+
+<h2 id="quick-reminder-gis-data-types-and-formats">Quick reminder: GIS data types and formats</h2>
+
+<p>Using the GIS extension, you can use geographic data that is vector format as shapefiles or raster data as ASCII and TIFF.</p>
+
+<ul>
+  <li>Vector datasets (e.g., shapefiles)
+    <ul>
+      <li>cities as points</li>
+      <li>roads as lines</li>
+      <li>buildings as polygons</li>
+    </ul>
+  </li>
+  <li>Raster datasets (e.g., ASCII, TIFF)
+    <ul>
+      <li>elevation data</li>
+      <li>remote sensing imagery</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="using-gis-with-abms-benefits">Using GIS with ABMs: Benefits</h2>
+
+<ul>
+  <li>Support more “realistic” models and tie model to a specific place</li>
+  <li>GIS data can provide attributes that can be used by patches and agents that would be too time consuming to manually code</li>
+  <li>Can be more visually appealing with layers of information displayed in Netlogo</li>
+  <li>It is not challenging to add GIS and CSV data to Netlogo</li>
+</ul>
+
+<h2 id="using-gis-with-abms-costs">Using GIS with ABMs: Costs</h2>
+
+<ul>
+  <li>Need realistic agent behavior to correspond with spatial scale of model with GIS</li>
+  <li>Scale matters. At detailed map scale, challenge to get spatial reference system to match Netlogo reference such that 10 km = distance of 1 patch, for example.</li>
+  <li>GIS data may slow down model load and run time</li>
+  <li>GIS and data acquisition/cleaning/processing may be time intensive and require tools like QGIS and Open Office</li>
+</ul>
+
+<p class="ToS"><a href="#/slides/gis">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/organize"></a></p>
+
+<h2 id="lets-make-a-model">Let’s Make a Model!</h2>
+
+<p>Overview of Model Process</p>
+
+<ul>
+  <li>Scope topic</li>
+  <li>Identify what you need</li>
+  <li>Getting/Organizing/Reviewing/Cleaning Data</li>
+  <li>Importing data and building a NetLogo model</li>
+  <li>Trouble-shooting and test throughout the process</li>
+  <li>Validation</li>
+  <li>Sharing your model</li>
+</ul>
+
+<h2 id="scoping-the-model">Scoping the model</h2>
+
+<ul>
+  <li>Topic: Ebola</li>
+  <li>What is being modeled: spread of ebola, rate of spread</li>
+  <li>Experiments: Identify impacts on rate of spread, if restrict travel</li>
+  <li>Spatial Scope: Africa &gt; Sierra Leone &gt; district level</li>
+  <li>Temporal Scope: Variable</li>
+  <li>Agents: People (categories based on SEIR model)</li>
+  <li>Environment: (layers we want to show such as with GIS) Admin districts, treatment facilities, roads, cities, airports</li>
+</ul>
+
+<h2 id="a-note-about-this-model-">A note about this model …</h2>
+
+<p>For this exercise we are only focusing on a sample model to bring in the GIS and CSV data into NetLogo, based on these themes above. We will not actually model the spread of the disease or be able to support the experiments with this base model. However, I encourage you to build upon the model to do this.</p>
+
+<p>See Dr. Andrew Crooks’s work on Ebola</p>
+
+<ul>
+  <li>Github: https://github.com/rohan-suri/ebola-abm</li>
+  <li>Video: https://youtu.be/IlvnW32uUdg</li>
+</ul>
+
+<h2 id="what-data-do-we-need">What data do we need?</h2>
+
+<ul>
+  <li>Map data</li>
+  <li>Demographic data</li>
+  <li>Ebola counts</li>
+</ul>
+
+<h2 id="reminder-about-shapefiles">Reminder about Shapefiles</h2>
+
+<p>Shapefiles are actually composed of several component files. At least 4, but up to 8, files that end in the following: .shp, .dbf, .shx, .prj, .sbn, .sbx, .cpg, .xml.</p>
+
+<p>Pro Tip: Try to keep all of these together in the same folder!</p>
+
+<h2 id="reminder-about-tabular-data">Reminder about Tabular Data</h2>
+
+<p>Use CSV files for structured data in text format separated by commas.</p>
+
+<p>Viewed in text editor:</p>
+
+<div class="text-document highlighter-rouge" title="data/SL_pop.csv"><pre class="highlight"><code>District,Province,Capital,Area,Population
+Kailahun,Eastern,Kailahun,3859,358190
+Kenema,Eastern,Kenema,6053,497948
+</code></pre>
+</div>
+
+<p>View in tabular form:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>District</th>
+      <th>Province</th>
+      <th>Capital</th>
+      <th>Area</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kailahun</td>
+      <td>Eastern</td>
+      <td>Kailahun</td>
+      <td>3859</td>
+      <td>358190</td>
+    </tr>
+    <tr>
+      <td>Kenema</td>
+      <td>Eastern</td>
+      <td>Kenema</td>
+      <td>6053</td>
+      <td>497948</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="where-can-we-find-and-download-gis-data-shp">Where can we find and download GIS data (shp)?</h2>
+
+<ul>
+  <li>Various US datasets: http://catalog.data.gov/dataset</li>
+  <li>Base level GIS global: https://lib.stanford.edu/GIS/data</li>
+  <li>List of sources: http://gisgeography.com/best-free-gis-datasources-raster-vector/</li>
+  <li>US Census data: https://www.census.gov/geo/maps-data/data/tiger-data.html</li>
+  <li>Global humanitarian datasets: https://data.hdx.rwlabs.org</li>
+  <li>Open Street Map and other datasets: WeoGeo Market - Trimble Data Marketplace: http://market.weogeo.com/</li>
+</ul>
+
+<h2 id="where-can-we-find-and-download-tabular-data">Where can we find and download tabular data?</h2>
+
+<ul>
+  <li>US Census data: https://www.census.gov/geo/maps-data/data/tiger-data.html</li>
+  <li>Global humanitarian datasets: https://data.hdx.rwlabs.org</li>
+  <li>Wikipedia: https://en.wikipedia.org/wiki/Districts_of_Sierra_Leone</li>
+</ul>
+
+<h2 id="data-organization">Data Organization</h2>
+
+<ul>
+  <li>Make a folder for this project called ‘GIS_ebola’</li>
+  <li>If you were starting from scratch, you would make two folders, one called ‘source_data’ and one called ‘data’</li>
+  <li>Why two folders?</li>
+</ul>
+
+<h2 id="review-the-data">Review the Data</h2>
+
+<p>The dbf file contains the GIS data attributes that you will use in NetLogo.</p>
+
+<ul>
+  <li>Open the .dbf file for “Cases_at_Admin2” in excel or open office (do not save!).</li>
+  <li>Note the column names of interest for the model (district name, country name, number of confirmed cases), and then close the file but do not save.</li>
+</ul>
+
+<p>Note: may have to refer back to data source to know what column names mean: District name (GLOBAL_A_1), country name (GLOBAL_A_3), and the number of confirmed ebola cases to date (V_ADM2_C3)</p>
+
+<h2 id="review-the-data-1">Review the Data</h2>
+
+<p>Review projection: The .prj file tells us the spatial reference information and projection of the shapefile. Ideally we want all our data in same projection, and lucky for us it is for this exercise.</p>
+
+<ul>
+  <li>
+    <p>Open .prj file in a text editor, review, close, do not save.</p>
+  </li>
+  <li>
+    <p>COPY any one of the .prj file and name it ‘projection.prj’ to make it easy for NetLogo and to have a separate prj file for the model.</p>
+  </li>
+  <li>
+    <p>Review spatial extent of data in QGIS, optional.</p>
+  </li>
+</ul>
+
+<h2 id="a-note-about-gis-software">A Note About GIS Software</h2>
+
+<p>ArcGIS/QGIS to View and Process GIS data</p>
+
+<p>QGIS: https://www.qgis.org/en/site/forusers/download.html</p>
+
+<p>QGIS is a free open source GIS software for manipulating and creating geographic data. 
+Use to reproject, edit, trim, simplify, and clean datasets for a model. 
+Create additional GIS data layers if needed for the model.</p>
+
+<h2 id="bring-data-into-netlogo">Bring Data into NetLogo</h2>
+
+<ul>
+  <li>Load data (image, vectors, csv) (tips to make it faster with pixel size and smaller input file via smoothing)</li>
+  <li>Make the map: Display, label features (draw features, apply color, label)</li>
+  <li>Create agents based on map attributes</li>
+  <li>Agent-environment interaction (e.g. movement constrained by map properties - road following, move within state, etc.)</li>
+  <li>Saving/Sharing model</li>
+</ul>
+
+<h2 id="netlogo-extensions">NetLogo Extensions</h2>
+
+<p>NetLogo Homepage: http://ccl.northwestern.edu/netlogo/</p>
+
+<p>Or, in NetLogo, go to Help &gt; NetLogo User Manual</p>
+
+<h2 id="netlogo-and-gis">NetLogo and GIS</h2>
+
+<p>A great reference for working with GIS data in NetLogo is the model in the model library:</p>
+
+<ul>
+  <li>Open NetLogo &gt; Models Library &gt; Code Examples &gt; GIS &gt; GIS General Examples</li>
+  <li>Click setup (to load the GIS)</li>
+  <li>Click display-countries</li>
+  <li>display-population-in-patches</li>
+  <li>Go to code tab (notice extensions at top, setup commands, good commenting throughout).</li>
+</ul>
+
+<p>Note: You can use this model to copy and adapt code sections for your own models.</p>
+
+<p class="ToS"><a href="#/slides/organize">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/ebola"></a></p>
+
+<h2 id="lets-make-the-ebola-model">Let’s Make the Ebola Model!</h2>
+
+<ul>
+  <li>Create a new model in Netlogo File &gt; New</li>
+  <li>Right click on View, go to Model Settings and change values to match my settings</li>
+  <li>Save model in ‘GIS_ebola’ folder but not inside any of the other folders.</li>
+</ul>
+
+<h2 id="define-global-variables">Define Global Variables</h2>
+
+<p>Find the following code at the top of your script to define globals:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>extensions [ gis csv ]
+globals [ sites
+		roads
+		districts
+		SL]
+breed [ admin-labels admin-label ]
+patches-own [district-name confirmed population road-here]
+turtles-own [name status time-infected]
+</code></pre>
+</div>
+
+<p>What entities will be created from data? What attributes will patches have? Turtles?</p>
+
+<h2 id="setup-button-to-load-gis">Setup Button to Load GIS</h2>
+
+<ul>
+  <li>On the interface tab make a button called “setup,” then go to code tab</li>
+  <li>Right click &gt; choose button&gt; type in setup</li>
+</ul>
+
+<h2 id="write-code-to-load-data">Write Code to Load Data</h2>
+
+<p>Find the next code block starting with:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to setup
+	...
+</code></pre>
+</div>
+
+<p>We need to assign data to our global variables and load the data files.</p>
+
+<h2 id="tasks">Tasks</h2>
+
+<ol>
+  <li>Specify projection file in the ‘gis:load-coordinate-system’ command.</li>
+  <li>Specify data files assigned to each global variable.</li>
+</ol>
+
+<h2 id="visualize-gis-layers">Visualize GIS Layers</h2>
+
+<p>Make a button called ‘draw,’ then go to code tab.</p>
+
+<p>Look at the next code block starting with:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to draw
+	...
+</code></pre>
+</div>
+
+<p>What colors are we making sites, districts, and roads? How do we assign roads to specific patches?</p>
+
+<h2 id="model-extent">Model Extent</h2>
+
+<p>What is our model extent now? (Hint: Remember that our roads data is just for Sierra Leone)</p>
+
+<h2 id="controlling-model-extent">Controlling Model Extent</h2>
+
+<p>To change model extent, we need to find where it is defined</p>
+
+<ul>
+  <li>
+    <p>Go back up to the ‘setup’ code block.</p>
+  </li>
+  <li>
+    <p>Comment-out entities with undesired extents to specify our desired extent; in this case, just Sierra Leone.</p>
+  </li>
+  <li>
+    <p>Return to the interface, press ‘setup’ and ‘draw.’</p>
+  </li>
+  <li>
+    <p>Green stickies when your model extent aligns with Sierra Leone only.</p>
+  </li>
+</ul>
+
+<h2 id="labelling-districts">Labelling Districts</h2>
+
+<p>Let’s color districts with the Ebola data. We already defined a patch attribute called ‘confirmed’ that we will use to hold the value for the number of confirmed cases, which we will get from the GIS data for districts.</p>
+
+<p>Use the Command Center to get a feel for the values of ‘confirmed’.</p>
+
+<p>Show values for 10 patches, type into the Command Center:</p>
+
+<div class="input highlighter-rouge"><pre class="highlight"><code>ask n-of 10 patches [show confirmed]
+</code></pre>
+</div>
+
+<p>Or just show the value for a specific patch:</p>
+
+<div class="input highlighter-rouge"><pre class="highlight"><code>ask (patch 1 1) [show confirmed]
+</code></pre>
+</div>
+
+<h2 id="color-districts-by-confirmed-cases">Color Districts By Confirmed Cases</h2>
+
+<ul>
+  <li>In the ‘draw’ code block, add the code shown in the box, check the code, then click the draw button.</li>
+</ul>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>gis:apply-coverage districts "V_ADM2_C_3" confirmed
+  ask patches
+  [ifelse (confirmed &gt; 0)
+    [set pcolor scale-color red confirmed 5000 0]
+    [set pcolor white]
+  ]
+</code></pre>
+</div>
+
+<ul>
+  <li>Make sure to place the block of code in the same order within the to draw section.</li>
+</ul>
+
+<p>Note: Always color patches first.</p>
+
+<h2 id="a-quick-note-about-gisdraw">A Quick Note About gis:draw</h2>
+
+<p>Note that the code ‘gis:draw’ only adds the GIS data to the display for visual effect. This does not actually apply any attributes to patches or turtles. And turtles and patches cannot interact with the features that are drawn with gis:draw command.</p>
+
+<p><img src="/gis-abm-lesson/images/netlogo_gis_draw.jpeg" alt="" /></p>
+
+<p>Also note that the red square in the image represents the size of one patch. You can see that the gray line of the boundary and the black line of the road are coarse when inspecting at the patch level - this is just the way Netlogo converts vector data for display. Also note that the detail of these vector GIS features is more detailed than the size of the patch.</p>
+
+<h2 id="label-each-district">Label Each District</h2>
+
+<p>Go to the interface tab. Create button called ‘load-pop’.</p>
+
+<p>Go to the code block starting with:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to load-pop
+	...
+</code></pre>
+</div>
+
+<p>Look at the structure of the loop beginning with the ‘foreach’ command. See how we can assign labels from our data file with this loop?</p>
+
+<h2 id="what-do-we-have-so-far">What Do We Have So Far?</h2>
+
+<p>The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled</p>
+
+<ul>
+  <li>We can see which districts have more confirmed ebola cases. Those with more cases are shown in darker red. Those with fewer cases are shown in lighter shades of pinkish-white.</li>
+  <li>The districts are outlined with thick, light gray lines. Each district name is labeled in black.</li>
+  <li>The treatment centers are shown as red circles. The road network is shown as thin black lines and they appear to connect most treatment centers.</li>
+</ul>
+
+<p>All this with GIS data freely downloaded and using the Netlogo GIS extension. Although this model is not complete, we have made a nice visual base model upon which to add more data and behavior.</p>
+
+<h2 id="what-story-are-we-trying-to-tell">What Story Are We Trying To Tell?</h2>
+
+<p>We can see which districts had more confirmed ebola cases, but we don’t know how much of the population in
+each district was impacted.</p>
+
+<p>The GIS data we’ve added thus far only had information about number of people infected with ebola, but we do not know the infect rate relative to total population.</p>
+
+<p>We need to get more data about the population in each district of Sierra Leone.</p>
+
+<h2 id="population-data">Population Data</h2>
+
+<p>For a quick source of data, go to Wikipedia: <a href="https://en.wikipedia.org/wiki/Districts_of_Sierra_Leone">Districts of Sierra Leone</a></p>
+
+<p>You can simply grab this table by highlighting the table contents including headers.</p>
+
+<p>Copy it, paste it in a spreadsheet, and save as ‘SL_pop.csv’ in the data folder with your GIS data. (Already done for you.)</p>
+
+<h2 id="inspect-the-data">Inspect the Data</h2>
+
+<p>Open in Excel (or other spreadsheet or text editor program).</p>
+
+<p>Note:</p>
+
+<ol>
+  <li>Columns of interest are the first (‘District’) and fifth (‘Population’) columns.</li>
+  <li>Formatting such as upper/lower/mixed case</li>
+  <li>Size of population is too large for a 1:1 representation with agents in Netlogo</li>
+</ol>
+
+<p>Let’s add agents to model in proportion to population for each district based on the population value stored in the csv file you just saved.</p>
+
+<h2 id="load-csv-file">Load CSV file</h2>
+
+<p>Go to the ‘load-pop’ section of the code. Begin with section that starts:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>file-open "...
+</code></pre>
+</div>
+
+<p>Specify the file name to load.</p>
+
+<p>Check the code, push the ‘load-pop’ button.</p>
+
+<h2 id="what-happened">What Happened?</h2>
+
+<p>Look at the CSV file again.</p>
+
+<p>Note how the name of the districts in the GIS data and shown on the display are all upper case, but the name of districts in the CSV data is mixed case. Netlogo does not do fuzzy matching. It must be exactly the same, so let’s add code to fix this.</p>
+
+<h2 id="fix-the-labels">Fix the Labels</h2>
+
+<p>We could fix this in the CSV file, but let’s fix it in Netlogo with some code.</p>
+
+<p>Go back to the ‘file-open’ code block and make these changes to the second and third lines after the ‘while’ command:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>let d_name item 0 row
+let district_name upper-case-string d_name
+</code></pre>
+</div>
+
+<p>This change calls a function named ‘upper-case-string’ to convert the data stored in ‘d_name’ to be uppercase and store this final version as district_name.</p>
+
+<p>Check the code and green stickies when you’ve made this change successfully.</p>
+
+<p>Go to the bottom of the code. Find the two statements starting with:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to-report upper-case-string [s]
+	...
+</code></pre>
+</div>
+
+<p>and:</p>
+
+<div class="text-document highlighter-rouge" title="ebola_model.nlogo"><pre class="highlight"><code>to-report uppoer-case-char [c]
+	...
+</code></pre>
+</div>
+
+<p>These two functions convert the input to uppercase.</p>
+
+<p>Check the code, and then click the ‘load-pop’ button.</p>
+
+<p>Green stickies when you’ve gotten the model to produce agents in proportion to population.</p>
+
+<p class="ToS"><a href="#/slides/ebola">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/ebola-ext"></a></p>
+
+<h2 id="what-story-are-we-trying-to-tell">What Story Are We Trying To Tell?</h2>
+
+<p>We now have a nice base model.</p>
+
+<p>We’re interested in how Ebola spreads, so we need to model how people move around between infected areas and treatment centers.</p>
+
+<h2 id="make-agents-move-along-roads">Make agents move along roads</h2>
+
+<p>Open the Netlogo model ‘expanded_ebola_model.nlogo’</p>
+
+<p>Let’s check out the ‘go’ code blocks.</p>
+
+<ul>
+  <li>subroutine for ‘travel’</li>
+  <li>right turn and move along roads</li>
+</ul>
+
+<p class="ToS"><a href="#/slides/ebola-ext">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/conclude"></a></p>
+
+<h2 id="sharing-the-model">Sharing the Model</h2>
+
+<p>To send this model to someone, you need to send the Netlogo model, plus the data folder full of data. It’s
+best to zip the model and data folder together at the same time.</p>
+
+<h2 id="review">Review</h2>
+
+<ul>
+  <li>You learned about pros/cons of GIS data and Netlogo</li>
+  <li>You searched for, obtained, reviewed GIS data</li>
+  <li>You loaded GIS data into Netlogo and displayed it</li>
+  <li>You applied GIS attributes to Netlogo patches and turtles</li>
+  <li>You loaded CSV data and used it to make more turtles</li>
+  <li>You overcame a few challenges that popped up</li>
+  <li>You learned how to share your model</li>
+</ul>
+
+<h2 id="a-few-parting-tips-">A Few Parting Tips …</h2>
+
+<p>Things to consider when thinking about using GIS data in a Model …</p>
+
+<p>Tip 1: Models can be effective and efficient without incorporating GIS</p>
+
+<p>Tip 2: If you use GIS data, you raise the expectation that your model represents realistic behavior. This means your audience may have less tolerance for inconsistencies with a GIS based model than if they were viewing an abstract model.</p>
+
+<p>Tip 3: If you use GIS data, try to also visually represent the layers in a meaningful and visually appealing way.</p>
+
+<p>Tip 4: If you create a model with GIS data, you have to send the model and the folder of GIS data to the end user as a zip package. Or you can export Netlogo world and send this as the base data to import into the model.</p>
+
+<p>Another good resource for GIS and Netlogo: <a href="https://simulatingcomplexity.wordpress.com/2014/08/20/turtles-in-space-integrating-gis-and-netlogo/">Turtles in space!</a></p>
+
+<p class="ToS"><a href="#/slides/conclude">Top of Section</a></p>
+
+<hr />
+
+
+
+	    </div>
+	  </div>
+  </body>
+</html>

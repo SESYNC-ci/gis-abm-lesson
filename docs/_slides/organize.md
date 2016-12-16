@@ -65,7 +65,7 @@ District,Province,Capital,Area,Population
 Kailahun,Eastern,Kailahun,3859,358190
 Kenema,Eastern,Kenema,6053,497948
 ```
-{:.text-document title="population.csv"}
+{:.text-document title="data/SL_pop.csv"}
 
 View in tabular form:
 
@@ -73,6 +73,7 @@ View in tabular form:
 |----------+----------+----------+------+------------|
 | Kailahun | Eastern  | Kailahun | 3859 |     358190 |
 | Kenema   | Eastern  | Kenema   | 6053 |     497948 |
+| ... |
 
 ===
 
@@ -140,7 +141,7 @@ Create additional GIS data layers if needed for the model.
 
 ## Bring Data into NetLogo
 
-- Load data (image, vectors, csv) (tips to make it faster with speed slider, and pixel size and making smaller input file via smoothing)
+- Load data (image, vectors, csv) (tips to make it faster with pixel size and smaller input file via smoothing)
 - Make the map: Display, label features (draw features, apply color, label)
 - Create agents based on map attributes
 - Agent-environment interaction (e.g. movement constrained by map properties - road following, move within state, etc.)
