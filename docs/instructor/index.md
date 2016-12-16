@@ -1,7 +1,7 @@
 ---
 layout: slideshow
-reveal-theme: /css/theme/sky.css
 style: /css/slideshow.css
+reveal-theme: /css/theme/sky.css
 ---
 
 <section markdown="1">
