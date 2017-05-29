@@ -159,6 +159,8 @@ to load-pop
 
 Look at the structure of the loop beginning with the 'foreach' command. See how we can assign labels from our data file with this loop?
 
+===
+
 ## What Do We Have So Far?
 
 The model display is showing the spatial extent of the country of Sierra Leone, although the country is not outlined or labeled
