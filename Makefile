@@ -3,15 +3,15 @@ SLIDES := $(shell ruby -e "require 'yaml';puts YAML.load_file('docs/_config.yml'
 LESSON := $(shell ruby -e "require 'yaml';puts YAML.load_file('docs/_config.yml')['lesson']")
 HANDOUTS := $(shell ruby -e "require 'yaml';puts YAML.load_file('docs/_config.yml')['handouts']")
 
-# list available RMarkdown slides and data
+# list available RMarkdown and Pweave slides and data
 SLIDES_RMD := $(shell find . -path "./docs/_slides_Rmd/*.Rmd")
+SLIDES_PMD := $(shell find . -path "./docs/_slides_pmd/*.pmd")
 DATA := $(shell find . -path "./data/*")
 
 # make target "course" copies handouts to ../../
 # adding a lesson number to any "worksheet"
-# it is intended to be called by the handouts Makefile
+# it is intended to be called in the handouts Makefile
 HANDOUTS := $(addprefix ../../, $(HANDOUTS:worksheet%=worksheet-$(LESSON)%))
-DATA := $(addprefix ../., $(DATA))
 
 # do not run rules in parallel; because
 # - bin/build_slides.R runs over all .Rmd slides
@@ -29,9 +29,13 @@ slides: $(SLIDES:%=docs/_slides/%.md)
 $(subst _Rmd,,$(SLIDES_RMD:.Rmd=.md)): $(SLIDES_RMD)
 	@bin/build_slides.R
 
+$(subst _pmd,,$(SLIDES_PMD:.pmd=.md)): $(SLIDES_PMD)
+	@bin/build_slides.py
+
 # this target updates the lesson repo
 # on GitHub following a slide build
 lesson: slides
+	git pull
 	if [ -n "$$(git status -s)" ]; then git commit -am 'commit by make'; fi
 	git fetch upstream master:upstream
 	git merge --no-edit upstream
@@ -39,10 +43,8 @@ lesson: slides
 
 # this target inserts into handouts repo
 # with root assumed to be at ../
-course: lesson $(DATA) $(HANDOUTS)
-
-../../data/%: data/%
-	rsync -r data/ ../../data/
+course: lesson $(HANDOUTS)
+	if [ -d "data" ]; then rsync -au data/ ../data/; fi
 
 ../../worksheet-$(LESSON)%: worksheet%
 	cp $< $@
@@ -50,7 +52,7 @@ course: lesson $(DATA) $(HANDOUTS)
 $(filter-out ../../worksheet%, $(HANDOUTS)): ../../%: %
 	cp $< $@
 
-# must call the archive target with a command
-# line parameter for DATE
+# must call the archive target with a
+# command line parameter for DATE
 archive:
 	@curl "https://sesync-ci.github.io/$${PWD##*/}/class/archive.html" -o docs/_posts/$(DATE)-index.html
