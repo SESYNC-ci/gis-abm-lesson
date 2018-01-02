@@ -2,6 +2,14 @@ img + br + em {
     font-size: 0.5em !Important;
 }
 
+.reveal table, .reveal pre code {
+    font-size: 90%;
+}
+
+.reveal img[alt^="plot of"] {
+    display: none;
+}
+
 .reveal section p {
     margin-top: 2em;
     margin-bottom: 1em;
@@ -13,23 +21,12 @@ img + br + em {
 }
 
 .reveal pre code {
-    max-height: 550px;
-}
-
-.input pre {
-    width: 100%;
-    background-color: #EBECE4;
-}
-
-.output pre {
-    width: 100%;
-    background-color: #FFFFFF;
+    max-height: 30vh;
 }
 
 .text-document.highlighter-rouge pre {
     background-color: #000000;
     margin: 2px auto;
-    width: 100%;
     border-radius: 0px 0px 5px 5px;
 }
 
@@ -38,20 +35,8 @@ img + br + em {
     color: #FFFFFF;
 }
 
-div.text-document::before {
-    content: attr(title);
-    text-align: left;
-    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-    font-size: 75%;
-    color: #000000;
-    background: #C0C0C0;
-    padding: 8px 15px;
-    border-radius: 5px 5px 0px 0px;
-    border: 1px solid #C0C0C0;
-    display: block;
-}     
-
 .reveal pre {
+    border-radius: 5px;
     font-size: 100%;
 }
 
@@ -65,11 +50,11 @@ p.on-white {
     border-radius: 15px;
 }
 
-.reveal h2.ex::after {
-    counter-increment: section;
-    content: " " counter(section);
-}
-
 .reveal h2, .reveal h1 {
     text-transform: capitalize;
+}
+
+.reveal ol, .reveal ul {
+    display: block;
+    margin-left: 5%;
 }

@@ -10,4 +10,4 @@
 -------------------------------------->
 
 [lesson]: https://sesync-ci.github.io/gis-abm-lesson
-[slideshow]: https://sesync-ci.github.io/gis-abm-lesson/instructor
+[slideshow]: https://sesync-ci.github.io/gis-abm-lesson/slides

@@ -1,0 +1,11 @@
+# R
+.Rhistory
+.Rproj.user
+docs/_slides_Rmd/cache
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Jekyll
+docs/.bundle
+docs/_site

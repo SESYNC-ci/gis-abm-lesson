@@ -1,4 +1,4 @@
-# Lesson
+# Site
 
 title: "Introduction to GIS and ABM"
 handouts:
@@ -35,8 +35,8 @@ slide_sorter:
 
 # Style
 
-styleurl: https://cdn.rawgit.com/sesync-ci/lesson-style/1.1/docs
-reveal: https://cdn.rawgit.com/hakimel/reveal.js/3.3.0
+styleurl: https://cdn.rawgit.com/sesync-ci/lesson-style/v1.2/docs
+reveal: https://cdn.rawgit.com/hakimel/reveal.js/3.5.0
 
 # Jekyll
 
