@@ -1,20 +1,22 @@
 # Lesson
 
-title:
-handouts:
-tag:
-lesson:
-instructor:
-authors:
-
 title: "Introduction to GIS and ABM"
 handouts:
   - ebola_model.nlogo
   - expanded_ebola_model.nlogo
+  - data/gis-abm-lesson.prj
+  - data/Cases_at_Admin2_Level
+  - data/Ebola_Treatment_Centers
+  - data/Sierra_Leone_Roads
+  - data/SL_Admin01
+  - data/SL_pop.csv
+  - data/SL_pop.ods
+  - data/README.md
+tags: v0.0
 instructor: Nick Magliocca
+lesson: 4
 authors:
   - Nick Magliocca
-lesson: 4
 
 # Slides
 

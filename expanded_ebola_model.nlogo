@@ -13,11 +13,11 @@ admin-labels-own [name]
 to setup
   clear-all
   reset-ticks
-  gis:load-coordinate-system (word "data/projection.prj")
-  set sites gis:load-dataset "data/Ebola_Treatment_Centers.shp"
-  set roads gis:load-dataset "data/Sierra Leone_Roads.shp"
-  set districts gis:load-dataset "data/Cases_at_Admin2_Level.shp"
-  set SL gis:load-dataset "data/SL_Admin01.shp"
+  gis:load-coordinate-system (word "data/gis-abm-lesson.prj")
+  set sites gis:load-dataset "data/Ebola_Treatment_Centers/Ebola_Treatment_Centers.shp"
+  set roads gis:load-dataset "data/Sierra_Leone_Roads/Sierra_Leone_Roads.shp"
+  set districts gis:load-dataset "data/Cases_at_Admin2_Level/Cases_at_Admin2_Level.shp"
+  set SL gis:load-dataset "data/SL_Admin01/SL_Admin01.shp"
   end
 
 
