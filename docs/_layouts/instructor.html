@@ -6,7 +6,7 @@
 	  <!--[if lt IE 9]>
       <script src="{{ site.reveal }}/lib/js/html5shiv.js"></script>
 	  <![endif]-->
-	  {% include head.html %}
+	  {% include head.html stylesource=site.baseurl %}
   </head>
   <body>
 	  <div class="reveal">
@@ -30,17 +30,17 @@
 	   Reveal.initialize({
 	       // Size
 	       width: 810,
-	       height: 500,
-	       margin: 0.02,
+	       height: 680,
+	       margin: 0.05,
 	       // Controls
 	       controls: false,
 	       // Transition
-	       transition: "none",
-         // Other
-         math: {
-             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
-             config: 'TeX-AMS_SVG'
-         },
+ 	       transition: "none",
+               // Other
+               math: {
+                   mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+                   config: 'TeX-AMS_SVG'
+               },
 	       // Plugins
 	       dependencies: [
 		         // Zoom in and out with Alt+click
