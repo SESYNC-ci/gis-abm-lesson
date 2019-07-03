@@ -11,7 +11,7 @@ We're interested in how Ebola spreads, so we need to model how people move aroun
 
 ## Make agents move along roads
 
-Open the Netlogo model '{{ site.handouts[1] }}'
+Open the Netlogo model '{{ site.data.lesson.handouts[1] }}'
 
 Let's check out the 'go' code blocks.
 
