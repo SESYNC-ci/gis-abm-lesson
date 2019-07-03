@@ -104,14 +104,14 @@ Show values for 10 patches, type into the Command Center:
 ```
 ask n-of 10 patches [show confirmed]
 ```
-{:.input}
+{:.input title="Console"}
 
 Or just show the value for a specific patch:
 
 ```
 ask (patch 1 1) [show confirmed]
 ```
-{:.input}
+{:.input title="Console"}
 
 ===
 
