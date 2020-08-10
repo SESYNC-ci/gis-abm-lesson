@@ -65,7 +65,7 @@ District,Province,Capital,Area,Population
 Kailahun,Eastern,Kailahun,3859,358190
 Kenema,Eastern,Kenema,6053,497948
 ```
-{:.text-document title="data/SL_pop.csv"}
+{:.text-document title="data/SL_pop.csv" .no-eval}
 
 View in tabular form:
 

@@ -23,7 +23,7 @@ breed [ admin-labels admin-label ]
 patches-own [district-name confirmed population road-here]
 turtles-own [name status time-infected]
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 What entities will be created from data? What attributes will patches have? Turtles?
 
@@ -44,7 +44,7 @@ Find the next code block starting with:
 to setup
 	...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 We need to assign data to our global variables and load the data files.	
 
@@ -67,7 +67,7 @@ Look at the next code block starting with:
 to draw
 	...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 What colors are we making sites, districts, and roads? How do we assign roads to specific patches?
 
@@ -127,7 +127,7 @@ gis:apply-coverage districts "V_ADM2_C_3" confirmed
     [set pcolor white]
   ]
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 - Make sure to place the block of code in the same order within the to draw section.
 
@@ -155,7 +155,7 @@ Go to the code block starting with:
 to load-pop
 	...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 Look at the structure of the loop beginning with the 'foreach' command. See how we can assign labels from our data file with this loop?
 
@@ -215,7 +215,7 @@ Go to the 'load-pop' section of the code. Begin with section that starts:
 ```
 file-open "...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 Specify the file name to load. 
 
@@ -241,7 +241,7 @@ Go back to the 'file-open' code block and make these changes to the second and t
 let d_name item 0 row
 let district_name upper-case-string d_name
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 This change calls a function named 'upper-case-string' to convert the data stored in 'd_name' to be uppercase and store this final version as district_name.
 
@@ -255,7 +255,7 @@ Go to the bottom of the code. Find the two statements starting with:
 to-report upper-case-string [s]
 	...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 and:
 
@@ -263,7 +263,7 @@ and:
 to-report uppoer-case-char [c]
 	...
 ```
-{:.text-document title="{{ site.data.lesson.handouts[0] }}"}
+{:.text-document title="{{ site.data.lesson.handouts[0] }}" .no-eval}
 
 These two functions convert the input to uppercase.
 
