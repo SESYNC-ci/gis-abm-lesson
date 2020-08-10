@@ -26,6 +26,21 @@ repository.
  └── Makefile
 ```
 
+The Makefile includes operations for building and publishing lessons. You can call
+the following targets from the command line. In RStudio, the "Build All" button
+runs the default Makefile target.
+
+  - `make preview` (default) to build `docs/_site` locally during development
+  - `make slides` run the `bin/build_*` scripts that populate `docs/_slides`
+  - `make upstream` merge updates made in the upstream `lesson-style` repository
+  - `make archive $DATE` freeze the lesson in the `docs/_archive` collection
+  - `make release` zip the handouts for attachment to a GitHub release
+
+Sometimes the "Build All" button in RStudio results in a failure or halted execution.
+This can be due to a caching problem with knitr not reloading packages when it uses
+cached chunks.  The solution is to delete the cache folder in the top-level and 
+rebuild.  
+
 Each lesson repository will include the above files **in addition to** lesson
 metadata and content wholly contained within the following files:
 
@@ -36,17 +51,14 @@ metadata and content wholly contained within the following files:
  │   ├── _data/lesson.yml
  │   └── _slides/
  ├── slides/
+[├── worksheet*.*]
 [├── *.Rproj]
  └─ README.md
 ```
 
-The Makefile includes targets for building and publishing lessons:
-  - `make preview` (default) to build `docs/_site` locally during development
-  - `make slides` run the `bin/build_*` scripts that populate `docs/_slides`
-  - `make upstream` merge updates made in the upstream `lesson-style` repository
-  - `make archive $DATE` freeze the lesson in the `docs/_archive` collection
-  - `make release` zip the handouts for attachment to a GitHub release
-
+Developing a lesson primarily involves writing "slides" (e.g. as Markdown or RMarkdown files),
+creating worksheets that will be distributed along with any data through a handout, and updating
+the metadata in `docs/_data/lesson.yml`.
 
 ## Lesson Content
 
@@ -164,36 +176,54 @@ view the built page in a browser under the default port, use the `servr` R packa
 servr::httw('docs/_site')
 ```
 
-If needed, additionally specify an `initpath` value of `'instructor'`, `'course'`, or `'slides'`.
+If needed, additionally specify an `initpath` value of `'instructor/'`, `'course/'`, or `'slideshow/'`.
 
 If the default port is in use, try a different port, e.g.:
 
 ```r
-servr::httw('docs/_site', port = 4321)
+servr::httw('docs/_site', port = 4322)
 ```
 
-For the site to load correctly, you must update the "RSTUDIO_PROXY"
-environment variable with the new port ...
+For the site to load correctly, you must update the `RSTUDIO_PROXY`
+environment variable using the next line of code and then force the site to build again.
 
 ```r
 Sys.setenv(RSTUDIO_PROXY=rstudioapi::translateLocalUrl('http://127.0.0.1:4322'))
 ```
 
-... and force the site to build again.
+In order to force the site to build again, you may need to delete the entire `docs/_site`
+directory manually. Rebuilding is necessary because the `RSTUDIO_PROXY` environment variable is
+a hash that is generated within your Rstudio session every time Rstudio restarts, and
+it is hard-coded into the file paths for the images and stylesheets. If this is not done, the
+images will appear as "broken links" in the slideshow, and the slides will be formatted incorrectly.
 
-## Versioning and Releases
+**Important note**: If you display the lesson as a slideshow in the viewer pane using
+`server::httw('docs/_site', initpath = 'slideshow/')`, the images do not display. This is 
+a feature, not a bug! The idea is for the instructor to generate the plots and other images
+and display them in their "Plots" tab, not on the slide.
 
-A lesson should be archived after any event in which it is
-presented&mdash;either in a workshop or à la carte setting. The archive is a
-built (i.e. processed into HTML) page copied into `docs/_archive`. After
-creating an archive, create a release on GitHub using the current `tag` value
-from `docs/_data/lesson.yml`, attach a "handouts.zip" (use `make release`), and
-commit the likely next `tag` value.
+## Releases and Handouts
+
+A lesson should be archived after any event in which it is presented&mdash;either in a workshop or à la carte setting. 
+
+Bump the `tag` value in `docs/_data/lesson.yml`. This will be the version number for the GitHub release. Then, archive the lesson html using the makefile. The archive is built (i.e. processed into HTML) page copied into `docs/_archive`. For example:
+
+`make archive DATE="2020-07-21"` 
+
+Create a release on GitHub using the `tag` value as the version with a "handouts.zip" (created through `make release`) attached. To get the file contents for the release description, use `tree` on the unzipped handouts directory. 
+
+To manually archive an html, copy the html from  `_site`  into `_archive`. Add the following header to the html file:
+
+```
+---
+---
+
+```
 
 The archive actually depends on two releases, and both must exist on GitHub:
 - The lesson's repository needs a release corresponding to `tag`.
-- The upstream `lesson-style` repository must have a release matching the string
-found in the `styleurl` value in `docs/_archive.yml`.
+- The upstream `lesson-style` repository must have a release matching ~~the string
+found in the `styleurl` value in~~ `docs/_archive.yml`.
 
 When preparing the first release, be sure to include all data and worksheets in
 a `handouts.zip` binary attachment and use the `tree` command to generate a
