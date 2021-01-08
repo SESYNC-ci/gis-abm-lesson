@@ -12,6 +12,9 @@ handouts:
   - data/README.md
 tag: v0.1
 instructor: Nick Magliocca
+lifecycle: stable # status for lifecycle badge
+badgecolor: green # color for lifecycle badge
+warning: false # whether to include note about lifecycle status
 lesson: 4
 authors:
   - Nick Magliocca
