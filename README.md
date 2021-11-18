@@ -1,4 +1,5 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://github.com/SESYNC-ci/sesync-ci.github.io/blob/master/lesson/lesson-lifecycle.md#stable)
+[![DOI](https://zenodo.org/badge/74402013.svg)](https://zenodo.org/badge/latestdoi/74402013)
 
 ## GIS ABM Lesson
 
